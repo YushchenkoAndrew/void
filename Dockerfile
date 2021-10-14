@@ -2,6 +2,7 @@ FROM ubuntu:latest
 
 ENV DEBIAN_FRONTEND=noninteractive
 RUN apt update && apt install -y nginx php7.4-fpm php7.4-cli supervisor
+# RUN apt update && apt install -y nginx php7.4-fpm php7.4-cli php7.4-curl supervisor
 
 COPY php/ /var/www/php/
 COPY files/ /var/www/files/
