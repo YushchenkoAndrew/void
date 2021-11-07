@@ -31,5 +31,5 @@ spec:
               mountPath: /var/www/files
               readOnly: false
             - name: config
-              mountPath: /etc/nginx/htpasswd/
-              readOnly: false
+              mountPath: /etc/nginx/htpasswd
+              readOnly: true

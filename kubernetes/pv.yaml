@@ -9,15 +9,14 @@ spec:
   accessModes:
     - ReadWriteOnce
   nfs:
-    path: /home/pi/files
-    server: 192.168.1.2
+    path: /media/sda1/files
+    server: 192.168.0.102
   persistentVolumeReclaimPolicy: Retain
   claimRef:
     name: void-files-pvc
     namespace: demo
 
 ---
-
 apiVersion: v1
 kind: PersistentVolume
 metadata:
@@ -29,8 +28,8 @@ spec:
   accessModes:
     - ReadWriteOnce
   nfs:
-    path: /home/pi/config
-    server: 192.168.1.2
+    path: /media/sda1/config
+    server: 192.168.0.102
   persistentVolumeReclaimPolicy: Retain
   claimRef:
     name: void-config-pvc
