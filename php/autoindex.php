@@ -17,14 +17,14 @@ function sortDir($path) {
 }
 
 function showDetails($name) {
-  $path = "/var/www$_SERVER[REQUEST_URI]$name";
+  $url = rtrim($path, "/") . "/";
+  $path = "/var/www$url$name";
 
   $modified = date("d-M-Y H:i ", filemtime($path));
   $size = is_file($path) ? formatSize(filesize($path)) : "";
 
   $name .= is_file($path) ? "" : "/";
-  $href = $_SERVER["REQUEST_URI"] . $name;
-  return "<a href='$href'>$name</a>" . str_repeat(" ", 60 - strlen($name)) . $modified . str_repeat(" ", 25 - strlen($modified)) . $size;
+  return "<a href='$url . $name'>$name</a>" . str_repeat(" ", 60 - strlen($name)) . $modified . str_repeat(" ", 25 - strlen($modified)) . $size;
 }
 ?>
 
