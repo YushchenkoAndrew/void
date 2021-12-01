@@ -7,7 +7,7 @@ COPY php/ /var/www/php/
 COPY php.ini /etc/php/7.4/fpm/
 
 RUN mkdir /var/www/files/
-RUN chmod -R 760 /var/www/files
+RUN chmod -R 777 /var/www/files
 RUN chown -R www-data:www-data /var/www/files/
 
 RUN mkdir -p /var/log/supervisor

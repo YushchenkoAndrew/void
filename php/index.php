@@ -1,4 +1,5 @@
 <?php
+error_reporting(E_WARNING); 
 
 // Simple routing option
 switch ($_SERVER["REQUEST_METHOD"]) {
