@@ -1,4 +1,10 @@
 <?php
+
+/**
+ * Return human readable size format
+ * @param int $bytes file size
+ * @return string human readable format
+ */
 function formatSize($bytes) {
     if ($bytes >= 1073741824) return number_format($bytes / 1073741824, 2) . " GB";
     if ($bytes >= 1048576) return number_format($bytes / 1048576, 2) . " MB";
@@ -6,6 +12,11 @@ function formatSize($bytes) {
     return $bytes;
 }
 
+/**
+ * Sort files in directory based on there names
+ * @param string $path directory path
+ * @return string[] return sorted out array
+ */
 function sortDir($path) {
   $files = [];
   foreach (scandir($path) as $name) {
@@ -16,6 +27,11 @@ function sortDir($path) {
   return $files;
 }
 
+/**
+ * Get more information about specified file in html format
+ * @param string $name file name
+ * @return string return info in html format
+ */
 function showDetails($name) {
   $url = rtrim($_SERVER["REQUEST_URI"], "/");
   $path = "/var/www$url/$name";
