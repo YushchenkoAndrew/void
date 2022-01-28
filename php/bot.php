@@ -21,3 +21,19 @@ function sendLogs($body) {
   curl_exec($ch);
   curl_close($ch);
 }
+
+/**
+ * Create and send default error log to bot
+ * @param string $file File where the err/info is from
+ * @param string $err error message
+ * @param string|null $message small description of situation
+ */
+function defaultLogs($file, $err, $message = null) {
+  sendLogs([
+    "stat" => "ERR",
+    "name" => "VOID",
+    "file" => $file,
+    "message" => $message ?? "Ohhh noo something is broken at File Server",
+    "desc" => $err,
+  ]);
+}

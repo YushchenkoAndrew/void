@@ -14,4 +14,5 @@ switch ($_SERVER["REQUEST_METHOD"]) {
   
   default:
     reqHandler(405, "Unknown method");
+    defaultLogs("php/docker", "I see, someone tries to sneak around");
 }

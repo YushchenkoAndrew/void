@@ -14,4 +14,5 @@ if (move_uploaded_file($_FILES["file"]["tmp_name"], $path . "/" . $_FILES["file"
   return reqHandler(201, "Success");
 }
 
+defaultLogs("php/upload", "Something went wrong with file upload: {$_FILES["file"]["error"]}");
 return reqHandler(500, "Server side error");

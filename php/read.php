@@ -2,7 +2,10 @@
 include_once("./helper.php");
 
 $path = "/var/www$_SERVER[REQUEST_URI]";
-if (!isPathOK($path) || !file_exists($path)) return include_once("./404.php");
+if (!isPathOK($path) || !file_exists($path)) {
+  defaultLogs("php/delete", "Bad path: '$path'\nSomeone trying to snick");
+  return include_once("./404.php");
+}
 
 if (is_file($path)) {
   header("Content-Type: " . mime_content_type($path));

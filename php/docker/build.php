@@ -9,6 +9,7 @@ if (($param = checkParams(["path", "t"]))) {
 
 $path = "/var/www/files$_GET[path]";
 if (!isPathOK($path) || !file_exists($path)) {
+  defaultLogs("php/delete", "Bad path: '$path'\nSomeone trying to snick");
   return reqHandler(404, "File not found");
 }
 
