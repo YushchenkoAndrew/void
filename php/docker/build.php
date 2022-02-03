@@ -26,6 +26,10 @@ curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 curl_setopt($ch, CURLOPT_INFILE, fopen(TAR_GZ_FILE, "r"));
 curl_setopt($ch, CURLOPT_INFILESIZE, filesize(TAR_GZ_FILE));
 curl_setopt($ch, CURLOPT_READFUNCTION, fn($ch, $fp, $len) => fgets($fp, $len));
+curl_setopt($ch, CURLOPT_WRITEFUNCTION, function($curl, $data) {
+  print(($res = json_decode($data ?? "")) ? $res->stream : "");
+  return strlen($data);
+});
 
 $res = curl_exec($ch);
 $err = curl_error($ch);
@@ -34,6 +38,5 @@ curl_close($ch);
 unlink(TAR_FILE);
 unlink(TAR_GZ_FILE);
 
-if ($res === false) return reqHandler(500, "Error: $err");
-if ($res === null && isset($_GET["push"])) return include_once("./docker/push.php");
-reqHandler(200, "Success", json_decode($res, true));
+// if ($res === false) return reqHandler(500, "Error: $err");
+// reqHandler(200, "Success", json_decode($res, true));

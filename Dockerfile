@@ -5,6 +5,7 @@ RUN apt update && apt install -y nginx php7.4-fpm php7.4-cli php7.4-curl php7.4-
 
 COPY php/ /var/www/php/
 COPY php.ini /etc/php/7.4/fpm/
+COPY www.conf /etc/php/7.4/fpm/pool.d/
 
 RUN mkdir /var/www/files/
 RUN chmod -R 777 /var/www/files

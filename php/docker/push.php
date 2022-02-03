@@ -7,6 +7,10 @@ if (!isset($_GET["t"])) {
 $ch = curl_init(getenv("DOCKER_URL") . "/images/{$_GET["t"]}/push");
 curl_setopt($ch, CURLOPT_POST, 1);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+curl_setopt($ch, CURLOPT_HTTPHEADER, [
+  "Content-Type: application/json",
+  "X-Registry-Auth: " . $_SERVER["HTTP_X_REGISTRY_AUTH"] ?? "",
+]);
 
 $res = curl_exec($ch);
 $err = curl_error($ch);
