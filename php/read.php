@@ -3,6 +3,7 @@ include_once("./helper.php");
 
 $path = "/var/www$_SERVER[REQUEST_URI]";
 if (!isPathOK($path) || !file_exists($path)) {
+  include_once("./bot.php");
   defaultLogs("php/delete", "Bad path: '$path'\nSomeone trying to snick");
   return include_once("./404.php");
 }
