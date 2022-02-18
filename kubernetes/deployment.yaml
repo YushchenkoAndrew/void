@@ -22,7 +22,7 @@ spec:
             claimName: void-config-pvc
       containers:
         - name: void
-          image: grimreapermortis/void:0.0.2
+          image: grimreapermortis/void:0.0.3
           imagePullPolicy: Always
           ports:
             - containerPort: 8003
@@ -33,3 +33,9 @@ spec:
             - name: config
               mountPath: /etc/nginx/htpasswd
               readOnly: true
+          envFrom:
+            - secretRef:
+                name: void-secrete
+          env:
+            - name: BOT_URL
+              value: http://$(BOT_SERVICE_SERVICE_HOST):$(BOT_SERVICE_SERVICE_PORT)/bot

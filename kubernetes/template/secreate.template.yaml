@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: void-secrete
+  namespace: demo
+type: Opaque
+stringData:
+  DOCKER_URL: ""
+
+  BOT_KEY: ""
+
