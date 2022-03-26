@@ -9,6 +9,24 @@ function isPathOK($path) {
   return $dirs[0] === "" && $dirs[1] === "var" && $dirs[2] === "www" && $dirs[3] === "files";
 }
 
+
+/**
+ * Delete file by path
+ * @param string Path to the file/directory
+ * @return bool true on success or false on failure
+ */
+function delFiles($path) {
+  if (!file_exists($path)) return true;
+  if (is_file($path)) return unlink($path);
+
+  foreach (scandir($path) as $name) {
+    if ($name === "." || $name === "..") continue;
+    if (!delFiles("$path/$name")) return false;
+  }
+
+  return rmdir($path);
+}
+
 /**
  * Create quick request with default body
  * @param int $stat response code
@@ -28,12 +46,36 @@ function reqHandler($stat, $message, $result = []) {
  * @return string return final directory path
  */
 function recursiveMkdir($path, $base = "/var/www/files") {
-  $dirs = explode("/", trim($path, "/"));
+  $dirs = explode("/", trim(rtrim($path, "/"), "/"));
   foreach ($dirs as &$dir) {
     if (empty($dir) || $dir === "..") continue;
     if (!is_dir($base .= "/" . $dir)) mkdir($base, 0777);
   }
   return $base;
+}
+
+/**
+ * Check if path is located in tmp dir
+ * @param string $path directory path
+ * @return bool return true if root path is /tmp
+ */
+function is_tmp($path) {
+  $dirs = explode("/", trim($path, "/"));
+  return $dirs[0] === "tmp";
+}
+
+/**
+ * Create a temp path
+ * @param string $path directory path
+ * @param string $name file name
+ * @param string $base accumulated variable needed for recursion
+ * @return string return hashed temp file name
+ */
+function tmp_path($path, $name, $base = "/var/www/files/tmp") {
+  if (!is_dir($base)) mkdir($base, 0777);
+
+  $dirs = explode("/", trim(rtrim($path, "/"), "/"));
+  return sprintf("%s/%s", $base, md5(implode("", array_slice($dirs, 1)) . $name));
 }
 
 /**

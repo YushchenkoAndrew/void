@@ -2,26 +2,14 @@
 include_once("./helper.php");
 include_once("./bot.php");
 
-/**
- * Delete file by path
- * @param string Path to the file/directory
- * @return bool true on success or false on failure
- */
-function delFiles($path) {
-  if (!file_exists($path)) return true;
-  if (is_file($path)) return unlink($path);
-
-  foreach (scandir($path) as $name) {
-    if ($name === "." || $name === "..") continue;
-    if (!delFiles("$path/$name")) return false;
-  }
-
-  return rmdir($path);
-}
-
 if (!isset($_GET["path"])) {
   return reqHandler(400, "'path' parm not specified");
 }
+
+// TODO: 
+// * Check if path is containing /tmp dir
+// * If so then check the difference between curr time and file's last updated
+// * If the time is expired then just delete the file
 
 $path = "/var/www/files$_GET[path]";
 if (!isPathOK($path) || !file_exists($path)) {
