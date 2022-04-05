@@ -12,6 +12,9 @@ curl_setopt($ch, CURLOPT_HTTPHEADER, [
   "X-Registry-Auth: " . $_SERVER["HTTP_X_REGISTRY_AUTH"] ?? "",
 ]);
 
+// Set unlimited execution time
+set_time_limit(0); 
+
 $res = curl_exec($ch);
 $err = curl_error($ch);
 curl_close($ch);
