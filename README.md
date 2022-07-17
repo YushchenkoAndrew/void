@@ -2,7 +2,7 @@
 
 ## A simple file server written with PHP & Nginx, that can build and push Docker images to DockerHub
 
-This microservice project is a **Part 3** of **''**. 
+This microservice project is a **Part 3** of **'Web-Based Project Management System'**. 
  * [Part 1 'WEB Server'](https://github.com/YushchenkoAndrew/mortis-grimreaper)
  * [Part 2 'API Server'](https://github.com/YushchenkoAndrew/grape)
  * [Part 3 'File Server'](https://github.com/YushchenkoAndrew/void)
@@ -15,7 +15,7 @@ Anyway, I build this project only for *2 reasons*:
 * Second, I wanted to use a bit complex business logic in some request (for example: building a Docker image)
 
 
-This project is quite simple then other services of **''**. The main logic of it, is to be able to upload/delete files to NFS + to be able to build Docker image and push it to DockerHub.
+This project is quite simple then other services of **'Web-Based Project Management System'**. The main logic of it, is to be able to upload/delete files to NFS + to be able to build Docker image and push it to DockerHub.
 
 ROUTES:
 * **[HEAD]** /files -- ping
