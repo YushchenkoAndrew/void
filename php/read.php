@@ -13,7 +13,7 @@ if (is_file($path)) {
   header("Content-Length: " . filesize($path));
   header("Cache-Control: must-revalidate");
   header("Pragma: public");
-  echo file_get_contents($path, true);
+  readfile($path, true);
   return;
 }
 
