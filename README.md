@@ -8,6 +8,8 @@ This microservice project is a **Part 3** of **'Web-Based Project Management Sys
  * [Part 3 'File Server'](https://github.com/YushchenkoAndrew/void)
  * [Part 4 'bot'](https://github.com/YushchenkoAndrew/botodachi)
 
+![System](/img/System.jpg)
+
  So I guess you wondering, why I called it *'void'*. Ehh, because it's a File Server and you know, it's kinda ironic in a way ..., right ?
 
 Anyway, I build this project only for *2 reasons*:
