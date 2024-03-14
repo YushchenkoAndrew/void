@@ -1,7 +1,7 @@
 <?php
 
 // Default test variables
-define("VOID_URL", "http://127.0.0.1:8003/files");
+define("VOID_URL", "http://127.0.0.1:8003/void");
 define("DIR_PATH", "/path_test");
 define("TEST_TAG", "grimreapermortis/demo2:demo");
 include_once("./helper.php");

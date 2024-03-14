@@ -2,7 +2,7 @@
 .gitignore
 
 .dockerignore
-*Dockerfile*
+# *Dockerfile*
 
 # Build dependencies
 kuberentes/

@@ -11,7 +11,7 @@ if (!isset($_GET["path"])) {
 // * If so then check the difference between curr time and file's last updated
 // * If the time is expired then just delete the file
 
-$path = "/var/www/files$_GET[path]";
+$path = "/var/www/void$_GET[path]";
 if (!isPathOK($path) || !file_exists($path)) {
   defaultLogs("php/delete", "Bad path: '$path'\nSomeone trying to snick");
   return reqHandler(404, "File not found");

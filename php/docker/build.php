@@ -1,13 +1,13 @@
 <?php
-define("TAR_FILE", "/var/www/files/tmp.tar");
-define("TAR_GZ_FILE", "/var/www/files/tmp.tar.gz");
+define("TAR_FILE", "/var/www/void/tmp.tar");
+define("TAR_GZ_FILE", "/var/www/void/tmp.tar.gz");
 include_once("./helper.php");
 
 if (($param = checkParams(["path", "t"]))) {
   return reqHandler(400, "'$path' parm not specified");
 }
 
-$path = "/var/www/files$_GET[path]";
+$path = "/var/www/void$_GET[path]";
 if (!isPathOK($path) || !file_exists($path)) {
   defaultLogs("php/delete", "Bad path: '$path'\nSomeone trying to snick");
   return reqHandler(404, "File not found");

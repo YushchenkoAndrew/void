@@ -20,14 +20,14 @@ Anyway, I build this project only for *2 reasons*:
 This project is quite simple then other services of **'Web-Based Project Management System'**. The main logic of it, is to be able to upload/delete files to NFS + to be able to build Docker image and push it to DockerHub.
 
 ROUTES:
-* **[HEAD]** /files -- ping
-* **[GET]** /files/{path} -- Download Files & check file tree with browser 
-* **[POST]** /files?path=/test **header** { Authorization: `Basic base64(pass)` }  **body** { file: [file] } -- Upload a file (directory will be created automatically)
-* **[DELETE]** /files?path=/test **header** { Authorization: `Basic base64(pass)` } -- Delete a file/directory
-* **[GET]** /files/docker  **header** { Authorization: `Basic base64(pass)` } -- Get Docker images from API
-* **[POST]** /files/docker?path=/test&t={docker_hub_username}/{repo_name}:{repo_version} **header** { Authorization: `Basic base64(pass)` } -- Build a docker image in dir /test
-* **[POST]** /files/docker/push?t={docker_hub_username}/{repo_name}:{repo_version} **header** { Authorization: `Basic base64(pass)`, X-Registry-Auth: `base64({ username: {docker_hub_username}, password: {docker_hub_pass}, email: {docker_hub_email}, serveraddress: {ip} })` } -- Push Docker image to DockerHub
-* **[DELETE]** /files/docker **header** { Authorization: `Basic base64(pass)` } -- Prune the images
+* **[HEAD]** /void -- ping
+* **[GET]** /void/{path} -- Download Files & check file tree with browser 
+* **[POST]** /void?path=/test **header** { Authorization: `Basic base64(pass)` }  **body** { file: [file] } -- Upload a file (directory will be created automatically)
+* **[DELETE]** /void?path=/test **header** { Authorization: `Basic base64(pass)` } -- Delete a file/directory
+* **[GET]** /void/docker  **header** { Authorization: `Basic base64(pass)` } -- Get Docker images from API
+* **[POST]** /void/docker?path=/test&t={docker_hub_username}/{repo_name}:{repo_version} **header** { Authorization: `Basic base64(pass)` } -- Build a docker image in dir /test
+* **[POST]** /void/docker/push?t={docker_hub_username}/{repo_name}:{repo_version} **header** { Authorization: `Basic base64(pass)`, X-Registry-Auth: `base64({ username: {docker_hub_username}, password: {docker_hub_pass}, email: {docker_hub_email}, serveraddress: {ip} })` } -- Push Docker image to DockerHub
+* **[DELETE]** /void/docker **header** { Authorization: `Basic base64(pass)` } -- Prune the images
 
 
 ## Diagram
@@ -50,7 +50,7 @@ build docker build . -t void
 docker run --name void -d -p 8003:8003 void
 ```
 
-Now you can just open a browser and visit http://127.0.0.1:8003/files/
+Now you can just open a browser and visit http://127.0.0.1:8003/void/
 
 ## Found a bug ?
 Found something strange or just want to improve this project, just send a PR.

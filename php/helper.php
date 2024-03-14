@@ -6,7 +6,7 @@
  */
 function isPathOK($path) {
   $dirs = explode("/", realpath($path));
-  return $dirs[0] === "" && $dirs[1] === "var" && $dirs[2] === "www" && $dirs[3] === "files";
+  return $dirs[0] === "" && $dirs[1] === "var" && $dirs[2] === "www" && $dirs[3] === "void";
 }
 
 
@@ -45,7 +45,7 @@ function reqHandler($stat, $message, $result = []) {
  * @param string $base accumulated variable needed for recursion
  * @return string return final directory path
  */
-function recursiveMkdir($path, $base = "/var/www/files") {
+function recursiveMkdir($path, $base = "/var/www/void") {
   $dirs = explode("/", trim(rtrim($path, "/"), "/"));
   foreach ($dirs as &$dir) {
     if (empty($dir) || $dir === "..") continue;
@@ -71,7 +71,7 @@ function is_tmp($path) {
  * @param string $base accumulated variable needed for recursion
  * @return string return hashed temp file name
  */
-function tmp_path($path, $name, $base = "/var/www/files/tmp") {
+function tmp_path($path, $name, $base = "/var/www/void/tmp") {
   if (!is_dir($base)) mkdir($base, 0777);
 
   $dirs = explode("/", trim(rtrim($path, "/"), "/"));
