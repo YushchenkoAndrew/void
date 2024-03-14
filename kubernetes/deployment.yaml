@@ -19,16 +19,16 @@ spec:
             claimName: void-files-pvc
         - name: config
           persistentVolumeClaim:
-            claimName: void-config-pvc
+            claimName: demo-config-pvc
       containers:
         - name: void
-          image: grimreapermortis/void:0.0.3
+          image: grimreapermortis/void:0.0.4
           imagePullPolicy: Always
           ports:
             - containerPort: 8003
           volumeMounts:
             - name: storage
-              mountPath: /var/www/files
+              mountPath: /var/www/void
               readOnly: false
             - name: config
               mountPath: /etc/nginx/htpasswd

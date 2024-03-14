@@ -8,14 +8,14 @@ spec:
     - ReadWriteOnce
   resources:
     requests:
-      storage: 1Gi
+      storage: 200Gi
 
 ---
 
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: void-config-pvc
+  name: demo-config-pvc
   namespace: demo
 spec:
   accessModes:

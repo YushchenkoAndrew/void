@@ -5,12 +5,12 @@ metadata:
   namespace: demo
 spec:
   capacity:
-    storage: 1Gi
+    storage: 200Gi
   accessModes:
     - ReadWriteOnce
   nfs:
-    path: /media/sda1/files
-    server: 192.168.0.102
+    path: /media/sdb1/nfs/void
+    server: 192.168.10.1
   persistentVolumeReclaimPolicy: Retain
   claimRef:
     name: void-files-pvc
@@ -20,7 +20,7 @@ spec:
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: void-config-pv
+  name: demo-config-pv
   namespace: demo
 spec:
   capacity:
@@ -28,9 +28,9 @@ spec:
   accessModes:
     - ReadWriteOnce
   nfs:
-    path: /media/sda1/config
-    server: 192.168.0.102
+    path: /media/sdb1/nfs/config
+    server: 192.168.10.1
   persistentVolumeReclaimPolicy: Retain
   claimRef:
-    name: void-config-pvc
+    name: demo-config-pvc
     namespace: demo
