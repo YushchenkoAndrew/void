@@ -45,7 +45,7 @@ function reqHandler($stat, $message, $result = []) {
  * @param string $base accumulated variable needed for recursion
  * @return string return final directory path
  */
-function recursiveMkdir($path, $base = "/var/www/void") {
+function recursiveMkdir($path, $base = "") {
   $dirs = explode("/", trim(rtrim($path, "/"), "/"));
   foreach ($dirs as &$dir) {
     if (empty($dir) || $dir === "..") continue;

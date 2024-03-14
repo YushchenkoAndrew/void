@@ -22,8 +22,8 @@ This project is quite simple then other services of **'Web-Based Project Managem
 ROUTES:
 * **[HEAD]** /void -- ping
 * **[GET]** /void/{path} -- Download Files & check file tree with browser 
-* **[POST]** /void?path=/test **header** { Authorization: `Basic base64(pass)` }  **body** { file: [file] } -- Upload a file (directory will be created automatically)
-* **[DELETE]** /void?path=/test **header** { Authorization: `Basic base64(pass)` } -- Delete a file/directory
+* **[POST]** /void/{path} **header** { Authorization: `Basic base64(pass)` }  **body** { file: [file] } -- Upload a file (directory will be created automatically)
+* **[DELETE]** /void/{path} **header** { Authorization: `Basic base64(pass)` } -- Delete a file/directory
 * **[GET]** /void/docker  **header** { Authorization: `Basic base64(pass)` } -- Get Docker images from API
 * **[POST]** /void/docker?path=/test&t={docker_hub_username}/{repo_name}:{repo_version} **header** { Authorization: `Basic base64(pass)` } -- Build a docker image in dir /test
 * **[POST]** /void/docker/push?t={docker_hub_username}/{repo_name}:{repo_version} **header** { Authorization: `Basic base64(pass)`, X-Registry-Auth: `base64({ username: {docker_hub_username}, password: {docker_hub_pass}, email: {docker_hub_email}, serveraddress: {ip} })` } -- Push Docker image to DockerHub
