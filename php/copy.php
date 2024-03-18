@@ -15,7 +15,7 @@ if (!isset($_PUT["path"])) {
 $file = basename($_PUT["path"]);
 $dst = @recursiveMkdir(dirname("/var/www/void$_PUT[path]"));
 
-if ($_PUT["replace"] == true ? rename($src, "$dst/$file") : copy($src, "$dst/$file")) {
+if ($_PUT["replace"] == 'true' ? rename($src, "$dst/$file") : copy($src, "$dst/$file")) {
   return reqHandler(200, "Success");
 }
 
