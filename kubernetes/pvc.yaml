@@ -19,7 +19,7 @@ metadata:
   namespace: demo
 spec:
   accessModes:
-    - ReadWriteOnce
+    - ReadOnlyMany
   resources:
     requests:
       storage: 1Gi

@@ -22,7 +22,7 @@ spec:
             claimName: demo-config-pvc
       containers:
         - name: void
-          image: grimreapermortis/void:0.0.4
+          image: grimreapermortis/void:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 8003

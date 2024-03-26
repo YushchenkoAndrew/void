@@ -26,7 +26,7 @@ spec:
   capacity:
     storage: 1Gi
   accessModes:
-    - ReadWriteOnce
+    - ReadOnlyMany
   nfs:
     path: /media/sdb1/nfs/config
     server: 192.168.10.1
