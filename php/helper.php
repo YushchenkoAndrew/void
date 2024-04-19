@@ -16,6 +16,7 @@ function isPathOK($path) {
  * @return bool true on success or false on failure
  */
 function delFiles($path) {
+  clearstatcache();
   if (!file_exists($path)) return true;
   if (is_file($path)) return unlink($path);
 
@@ -24,7 +25,8 @@ function delFiles($path) {
     if (!delFiles("$path/$name")) return false;
   }
 
-  return rmdir($path);
+  clearstatcache();
+  return @rmdir($path);
 }
 
 /**
