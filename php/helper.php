@@ -20,13 +20,15 @@ function delFiles($path) {
   if (!file_exists($path)) return true;
   if (is_file($path)) return unlink($path);
 
-  foreach (scandir($path) as $name) {
+  $dir = opendir($path);
+  while(($name = readdir($dir)) !== false) {
     if ($name === "." || $name === "..") continue;
     if (!delFiles("$path/$name")) return false;
   }
 
+  closedir($dir);
   clearstatcache();
-  return @rmdir($path);
+  return rmdir($path);
 }
 
 /**
