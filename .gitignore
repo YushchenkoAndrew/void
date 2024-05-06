@@ -1,4 +1,2 @@
-.htpasswd
-files/
 secrete.yaml
 kubernetes/secreate.yaml

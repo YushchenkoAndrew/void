@@ -20,8 +20,8 @@ COPY nginx.conf .
 
 # Testing 
 # ENV DOCKER_URL=172.17.0.1:2375
-# COPY .htpasswd ./htpasswd/
-# COPY . /var/www/void/test/
+COPY .htpasswd ./htpasswd/
+COPY files/* /var/www/void/templates/
 
 EXPOSE 8003
 STOPSIGNAL SIGTERM
