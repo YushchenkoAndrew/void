@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: void-deployment
-  namespace: demo
+  namespace: prod
 spec:
   replicas: 1
   selector:
@@ -19,13 +19,17 @@ spec:
             claimName: void-files-pvc
         - name: config
           persistentVolumeClaim:
-            claimName: demo-config-pvc
+            claimName: void-config-pvc
       containers:
         - name: void
           image: grimreapermortis/void:latest
           imagePullPolicy: Always
-          ports:
-            - containerPort: 8003
+          # envFrom:
+          #   - secretRef:
+          #       name: void-secrete
+          # env:
+          #   - name: BOT_URL
+          #     value: http://$(BOT_SERVICE_SERVICE_HOST):$(BOT_SERVICE_SERVICE_PORT)/bot
           volumeMounts:
             - name: storage
               mountPath: /var/www/void
@@ -33,9 +37,5 @@ spec:
             - name: config
               mountPath: /etc/nginx/htpasswd
               readOnly: true
-          envFrom:
-            - secretRef:
-                name: void-secrete
-          env:
-            - name: BOT_URL
-              value: http://$(BOT_SERVICE_SERVICE_HOST):$(BOT_SERVICE_SERVICE_PORT)/bot
+          ports:
+            - containerPort: 8003

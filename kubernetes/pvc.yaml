@@ -2,24 +2,22 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: void-files-pvc
-  namespace: demo
+  namespace: prod
 spec:
   accessModes:
     - ReadWriteOnce
   resources:
     requests:
       storage: 200Gi
-
 ---
-
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: demo-config-pvc
-  namespace: demo
+  name: void-config-pvc
+  namespace: prod
 spec:
   accessModes:
     - ReadOnlyMany
   resources:
     requests:
-      storage: 1Gi
+      storage: 200Mi

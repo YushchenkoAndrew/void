@@ -2,35 +2,52 @@ apiVersion: v1
 kind: PersistentVolume
 metadata:
   name: void-files-pv
-  namespace: demo
+  namespace: prod
 spec:
   capacity:
     storage: 200Gi
   accessModes:
     - ReadWriteOnce
   nfs:
-    path: /media/sdb1/nfs/void
-    server: 192.168.10.1
+    path: /services/void
+    server: 10.0.2.2
   persistentVolumeReclaimPolicy: Retain
   claimRef:
     name: void-files-pvc
-    namespace: demo
-
+    namespace: prod
+  mountOptions:
+    - rw
+    - bg
+    - hard
+    - nfsvers=4.2
+    - rsize=524288
+    - wsize=524288
+    - tcp
+    - timeo=600
 ---
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: demo-config-pv
-  namespace: demo
+  name: void-config-pv
+  namespace: prod
 spec:
   capacity:
-    storage: 1Gi
+    storage: 200Mi
   accessModes:
     - ReadOnlyMany
   nfs:
-    path: /media/sdb1/nfs/config
-    server: 192.168.10.1
+    path: /configs/void
+    server: 10.0.2.2
   persistentVolumeReclaimPolicy: Retain
   claimRef:
-    name: demo-config-pvc
-    namespace: demo
+    name: void-config-pvc
+    namespace: prod
+  mountOptions:
+    - rw
+    - bg
+    - hard
+    - nfsvers=4.2
+    - rsize=524288
+    - wsize=524288
+    - tcp
+    - timeo=600
